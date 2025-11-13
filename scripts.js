@@ -1,3 +1,5 @@
+// 💡 JAVASCRIPT INNOVATION: Centralized Data, Image Mapping, and Rendering Logic.
+
 const events = [
     // --- Day 1: Nov 20, 2025 ---
     {
@@ -22,11 +24,25 @@ const events = [
         image: "images/cybersecurity.jpg"
     },
     {
+        title: "Mobile-First Design in Practice",
+        type: "Workshop",
+        date: "2025-11-20T13:00:00",
+        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
+        image: "images/mobile-first.jpg"
+    },
+    {
         title: "Introduction to Quantum Computing",
         type: "Talk",
         date: "2025-11-20T14:00:00",
         description: "A beginner-friendly overview of quantum mechanics and its potential to revolutionize computing.",
         image: "images/quantum.jpg"
+    },
+    {
+        title: "DevOps Culture and Tooling",
+        type: "Talk",
+        date: "2025-11-20T15:30:00",
+        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
+        image: "images/devops.jpg"
     },
     {
         title: "Networking Mixer & Welcome Reception",
@@ -64,6 +80,13 @@ const events = [
         date: "2025-11-21T14:00:00",
         description: "Understand the cognitive biases and psychological principles that drive effective UX design.",
         image: "images/psychology-ux.jpg"
+    },
+    {
+        title: "API Design Best Practices",
+        type: "Talk",
+        date: "2025-11-21T15:00:00",
+        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
+        image: "images/api.jpg"
     },
     {
         title: "Panel: The Future of Remote Work in Tech",
@@ -109,6 +132,13 @@ const events = [
         description: "An open Q&A session with a panel of the conference's top speakers. No topic is off-limits!",
         image: "images/panel-ama.jpg"
     },
+    {
+        title: "Closing Ceremony & Awards",
+        type: "Social",
+        date: "2025-11-22T17:30:00",
+        description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
+        image: "images/awards.jpg"
+    },
 
     // --- Bonus / Past Events for testing ---
     {
@@ -118,32 +148,139 @@ const events = [
         description: "A 24-hour coding challenge with prizes for the most innovative projects. Kicks off before the main event.",
         image: "images/hackathon.jpg"
     },
-    {
-        title: "API Design Best Practices",
-        type: "Talk",
-        date: "2025-11-21T15:00:00",
-        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
-        image: "images/api.jpg"
-    },
-    {
-        title: "DevOps Culture and Tooling",
-        type: "Talk",
-        date: "2025-11-20T15:30:00",
-        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
-        image: "images/devops.jpg"
-    },
-    {
-        title: "Mobile-First Design in Practice",
-        type: "Workshop",
-        date: "2025-11-20T13:00:00",
-        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
-        image: "images/mobile-first.jpg"
-    },
-    {
-        title: "Closing Ceremony & Awards",
-        type: "Social",
-        date: "2025-11-22T17:30:00",
-        description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
-        image: "images/awards.jpg"
-    }
 ];
+
+// 🖼️ IMAGE MAPPING: Maps the event title to the single image URL generated previously.
+// This allows the code to dynamically replace the placeholder image paths (e.g., images/keynote.jpg)
+// with the actual generated image URL.
+const IMAGE_MAPPING = {
+    "Opening Keynote: The Future of AI": "http://googleusercontent.com/image_generation_content/0",
+    "Advanced JavaScript Workshop": "http://googleusercontent.com/image_generation_content/0",
+    "Cybersecurity in the Cloud Era": "http://googleusercontent.com/image_generation_content/0",
+    "Introduction to Quantum Computing": "http://googleusercontent.com/image_generation_content/0",
+    "Networking Mixer & Welcome Reception": "http://googleusercontent.com/image_generation_content/0",
+    "The Ethics of Machine Learning": "http://googleusercontent.com/image_generation_content/0",
+    "Mastering React Performance": "http://googleusercontent.com/image_generation_content/0",
+    "The Psychology of User Experience (UX)": "http://googleusercontent.com/image_generation_content/0",
+    "Panel: The Future of Remote Work in Tech": "http://googleusercontent.com/image_generation_content/0",
+    "UI/UX Design Fundamentals for Developers": "http://googleusercontent.com/image_generation_content/0",
+    "From Monolith to Serverless": "http://googleusercontent.com/image_generation_content/0",
+    "State of Web Assembly in 2025": "http://googleusercontent.com/image_generation_content/0",
+    "Data Visualization with D3.js": "http://googleusercontent.com/image_generation_content/0",
+    "Closing Panel: Ask Me Anything with Speakers": "http://googleusercontent.com/image_generation_content/0",
+    "Pre-Conference Hackathon": "http://googleusercontent.com/image_generation_content/0",
+    "API Design Best Practices": "http://googleusercontent.com/image_generation_content/0",
+    "DevOps Culture and Tooling": "http://googleusercontent.com/image_generation_content/0",
+    "Mobile-First Design in Practice": "http://googleusercontent.com/image_generation_content/0",
+    "Closing Ceremony & Awards": "http://googleusercontent.com/image_generation_content/0",
+    // Placeholder for "Building Scalable Web Apps with Microservices"
+    "Building Scalable Web Apps with Microservices": "http://googleusercontent.com/image_generation_content/0", 
+};
+
+
+/**
+ * 🛠️ CORE FUNCTION: Groups the flat list of events into an object keyed by date.
+ * This makes rendering the schedule by day much easier.
+ * @param {Array<Object>} eventList - The array of all events.
+ * @returns {Object} A map where keys are formatted dates (e.g., "Thursday, Nov 20")
+ */
+function groupEventsByDate(eventList) {
+    // 💡 INNOVATION: Use reduce for a clean, single-pass grouping operation.
+    return eventList.sort((a, b) => new Date(a.date) - new Date(b.date)).reduce((acc, event) => {
+        const eventDate = new Date(event.date);
+        
+        // Format the date for the section header (e.g., "Thursday, Nov 20, 2025")
+        const formattedDate = eventDate.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+        });
+
+        if (!acc[formattedDate]) {
+            acc[formattedDate] = [];
+        }
+
+        acc[formattedDate].push(event);
+        return acc;
+    }, {});
+}
+
+/**
+ * ⚙️ RENDERING LOGIC: Generates the HTML for a single event card.
+ * @param {Object} event - The event data object.
+ * @returns {string} The HTML string for the event card.
+ */
+function createEventCardHTML(event) {
+    const eventTime = new Date(event.date).toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        hour12: true 
+    });
+    
+    // Get the correct dynamic image URL
+    const imageUrl = IMAGE_MAPPING[event.title] || event.image; 
+
+    // Use Template Literals for cleaner, multi-line HTML generation
+    return `
+        <div class="event-card">
+            <div class="event-image-wrapper">
+                <img src="${imageUrl}" alt="${event.title} visual" class="event-image">
+            </div>
+            <div class="event-content">
+                <div class="event-meta">
+                    <span class="event-time">${eventTime}</span>
+                    <span class="event-type type-${event.type}">${event.type}</span>
+                </div>
+                <h3>${event.title}</h3>
+                <p class="event-description">${event.description}</p>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 🚀 MAIN FUNCTION: Renders the entire conference schedule to the DOM.
+ */
+function renderSchedule() {
+    const container = document.getElementById('schedule-container');
+    if (!container) return; 
+
+    // 1. Group events by date
+    const groupedEvents = groupEventsByDate(events);
+    
+    let fullScheduleHTML = '';
+
+    // 2. Iterate through each day and build the full HTML string
+    for (const [date, dayEvents] of Object.entries(groupedEvents)) {
+        
+        // Start the section for the day
+        let dayHTML = `<section class="day-section">
+            <h2 class="day-header">${date}</h2>
+            <div class="day-events">`;
+
+        // Add all event cards for that day
+        dayEvents.forEach(event => {
+            dayHTML += createEventCardHTML(event);
+        });
+
+        // Close the section
+        dayHTML += `</div></section>`;
+        fullScheduleHTML += dayHTML;
+    }
+
+    // 3. Inject the complete HTML into the DOM (Efficiently using innerHTML once)
+    container.innerHTML = fullScheduleHTML;
+    
+    // 4. INNOVATION: Add an animation class once all content is loaded (Optional, but smooth)
+    document.querySelectorAll('.event-image').forEach(img => {
+        img.onload = () => {
+            img.classList.add('loaded'); // Fades image in using CSS (see style.css)
+        };
+        // Handle case where image is already cached
+        if (img.complete) img.classList.add('loaded');
+    });
+}
+
+// 🚦 EXECUTION: Wait until the entire HTML document is fully loaded before running the script.
+document.addEventListener('DOMContentLoaded', renderSchedule);
