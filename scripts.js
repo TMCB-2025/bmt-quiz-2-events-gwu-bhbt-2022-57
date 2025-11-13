@@ -1,4 +1,3 @@
-// 💡 JAVASCRIPT INNOVATION: Centralized Data, Image Mapping, and Rendering Logic.
 
 const events = [
     // --- Day 1: Nov 20, 2025 ---
@@ -7,7 +6,7 @@ const events = [
         type: "Keynote",
         date: "2025-11-20T09:00:00",
         description: "Join industry visionary Dr. Evelyn Reed as she unveils the next decade of AI innovation.",
-        image: "images/keynote.jpg"
+        image: "images/keynote.jpg" // This is a fallback/placeholder, will be overridden by IMAGE_MAPPING
     },
     {
         title: "Advanced JavaScript Workshop",
@@ -150,137 +149,6 @@ const events = [
     },
 ];
 
-// 🖼️ IMAGE MAPPING: Maps the event title to the single image URL generated previously.
-// This allows the code to dynamically replace the placeholder image paths (e.g., images/keynote.jpg)
-// with the actual generated image URL.
-const IMAGE_MAPPING = {
-    "Opening Keynote: The Future of AI": "http://googleusercontent.com/image_generation_content/0",
-    "Advanced JavaScript Workshop": "http://googleusercontent.com/image_generation_content/0",
-    "Cybersecurity in the Cloud Era": "http://googleusercontent.com/image_generation_content/0",
-    "Introduction to Quantum Computing": "http://googleusercontent.com/image_generation_content/0",
-    "Networking Mixer & Welcome Reception": "http://googleusercontent.com/image_generation_content/0",
-    "The Ethics of Machine Learning": "http://googleusercontent.com/image_generation_content/0",
-    "Mastering React Performance": "http://googleusercontent.com/image_generation_content/0",
-    "The Psychology of User Experience (UX)": "http://googleusercontent.com/image_generation_content/0",
-    "Panel: The Future of Remote Work in Tech": "http://googleusercontent.com/image_generation_content/0",
-    "UI/UX Design Fundamentals for Developers": "http://googleusercontent.com/image_generation_content/0",
-    "From Monolith to Serverless": "http://googleusercontent.com/image_generation_content/0",
-    "State of Web Assembly in 2025": "http://googleusercontent.com/image_generation_content/0",
-    "Data Visualization with D3.js": "http://googleusercontent.com/image_generation_content/0",
-    "Closing Panel: Ask Me Anything with Speakers": "http://googleusercontent.com/image_generation_content/0",
-    "Pre-Conference Hackathon": "http://googleusercontent.com/image_generation_content/0",
-    "API Design Best Practices": "http://googleusercontent.com/image_generation_content/0",
-    "DevOps Culture and Tooling": "http://googleusercontent.com/image_generation_content/0",
-    "Mobile-First Design in Practice": "http://googleusercontent.com/image_generation_content/0",
-    "Closing Ceremony & Awards": "http://googleusercontent.com/image_generation_content/0",
-    // Placeholder for "Building Scalable Web Apps with Microservices"
-    "Building Scalable Web Apps with Microservices": "http://googleusercontent.com/image_generation_content/0", 
-};
-
-
-/**
- * 🛠️ CORE FUNCTION: Groups the flat list of events into an object keyed by date.
- * This makes rendering the schedule by day much easier.
- * @param {Array<Object>} eventList - The array of all events.
- * @returns {Object} A map where keys are formatted dates (e.g., "Thursday, Nov 20")
- */
-function groupEventsByDate(eventList) {
-    // 💡 INNOVATION: Use reduce for a clean, single-pass grouping operation.
-    return eventList.sort((a, b) => new Date(a.date) - new Date(b.date)).reduce((acc, event) => {
-        const eventDate = new Date(event.date);
-        
-        // Format the date for the section header (e.g., "Thursday, Nov 20, 2025")
-        const formattedDate = eventDate.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric' 
-        });
-
-        if (!acc[formattedDate]) {
-            acc[formattedDate] = [];
-        }
-
-        acc[formattedDate].push(event);
-        return acc;
-    }, {});
-}
-
-/**
- * ⚙️ RENDERING LOGIC: Generates the HTML for a single event card.
- * @param {Object} event - The event data object.
- * @returns {string} The HTML string for the event card.
- */
-function createEventCardHTML(event) {
-    const eventTime = new Date(event.date).toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        hour12: true 
-    });
-    
-    // Get the correct dynamic image URL
-    const imageUrl = IMAGE_MAPPING[event.title] || event.image; 
-
-    // Use Template Literals for cleaner, multi-line HTML generation
-    return `
-        <div class="event-card">
-            <div class="event-image-wrapper">
-                <img src="${imageUrl}" alt="${event.title} visual" class="event-image">
-            </div>
-            <div class="event-content">
-                <div class="event-meta">
-                    <span class="event-time">${eventTime}</span>
-                    <span class="event-type type-${event.type}">${event.type}</span>
-                </div>
-                <h3>${event.title}</h3>
-                <p class="event-description">${event.description}</p>
-            </div>
-        </div>
-    `;
-}
-
-/**
- * 🚀 MAIN FUNCTION: Renders the entire conference schedule to the DOM.
- */
-function renderSchedule() {
-    const container = document.getElementById('schedule-container');
-    if (!container) return; 
-
-    // 1. Group events by date
-    const groupedEvents = groupEventsByDate(events);
-    
-    let fullScheduleHTML = '';
-
-    // 2. Iterate through each day and build the full HTML string
-    for (const [date, dayEvents] of Object.entries(groupedEvents)) {
-        
-        // Start the section for the day
-        let dayHTML = `<section class="day-section">
-            <h2 class="day-header">${date}</h2>
-            <div class="day-events">`;
-
-        // Add all event cards for that day
-        dayEvents.forEach(event => {
-            dayHTML += createEventCardHTML(event);
-        });
-
-        // Close the section
-        dayHTML += `</div></section>`;
-        fullScheduleHTML += dayHTML;
-    }
-
-    // 3. Inject the complete HTML into the DOM (Efficiently using innerHTML once)
-    container.innerHTML = fullScheduleHTML;
-    
-    // 4. INNOVATION: Add an animation class once all content is loaded (Optional, but smooth)
-    document.querySelectorAll('.event-image').forEach(img => {
-        img.onload = () => {
-            img.classList.add('loaded'); // Fades image in using CSS (see style.css)
-        };
-        // Handle case where image is already cached
-        if (img.complete) img.classList.add('loaded');
-    });
-}
-
-// 🚦 EXECUTION: Wait until the entire HTML document is fully loaded before running the script.
-document.addEventListener('DOMContentLoaded', renderSchedule);
+// 🖼️ IMAGE MAPPING: Maps the event title to the actual full image URLs generated previously.
+// This is where the magic happens to inject your specific images!
+const IMAGE_MAPPING = 
