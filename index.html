@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Conference Schedule</title>
-
+    <title>Simple To-Do List</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="page-header">
-        <h1>Conference Schedule</h1>
-        <p>Your guide to all the talks, workshops, and networking events.</p>
-    </header>
+    <div class="todo-container">
+        <h1>My To-Do List 📝</h1>
+        
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button id="addButton">Add Task</button>
+        </div>
 
-    <main id="schedule-container" class="schedule-container">
-        <div class="loading">Loading Schedule...</div>
-    </main>
-
-    <script src="script.js" defer></script>
+        <ul id="taskList">
+            </ul>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,152 +1,94 @@
-/* 🎨 INNOVATION: Define a design system using CSS Variables */
-:root {
-    --color-primary: #1e88e5; /* Main Blue */
-    --color-secondary: #00bcd4; /* Accent Cyan */
-    --color-background: #0e121f; /* Deep Navy Background */
-    --color-card-bg: #1f283e; /* Darker Card Background */
-    --color-text: #ffffff;
-    --color-subtext: #bbbbbb;
-    --font-family: 'Inter', sans-serif;
-}
-
-/* 📱 BASE STYLES (MOBILE-FIRST) */
+/* Basic Reset and Global Styles */
 body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-.page-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #0c101a;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.page-header h1 {
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin: 0;
-}
-
-.page-header p {
-    color: var(--color-subtext);
-    font-size: 1rem;
-}
-
-/* 📅 SCHEDULE LAYOUT */
-.schedule-container {
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.day-section {
-    margin-bottom: 3rem;
-    padding-top: 1rem;
-}
-
-.day-header {
-    font-size: 1.5rem;
-    color: var(--color-secondary);
-    border-bottom: 3px solid var(--color-secondary);
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
-/* 🖼️ EVENT CARD STYLING */
-.event-card {
-    /* MOBILE LAYOUT: Full-width card with flex column direction */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     display: flex;
-    flex-direction: column; 
-    background-color: var(--color-card-bg);
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
 }
 
-.event-card:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
-}
-
-.event-image-wrapper {
-    width: 100%; /* Image takes full width of card on mobile */
-    aspect-ratio: 16 / 9; /* Common video/presentation ratio for consistency */
-    overflow: hidden;
-}
-
-.event-image {
+/* Container for the To-Do List */
+.todo-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 400px;
 }
 
-.event-content {
-    padding: 1.5rem;
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
 }
 
-.event-content h3 {
-    font-size: 1.3rem;
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+/* Input and Button Group */
+.input-group {
+    display: flex;
+    margin-bottom: 20px;
 }
 
-.event-meta {
+#taskInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+#addButton {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#addButton:hover {
+    background-color: #45a049;
+}
+
+/* Task List Styling */
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
-    color: var(--color-subtext);
-    margin-bottom: 1rem;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.event-type {
-    /* Style the type tag based on the event's nature */
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+#taskList li:hover {
+    background-color: #e0e0e0;
 }
 
-/* INNOVATION: Color coding by event type */
-.type-Keynote { background-color: #e91e63; } /* Pink */
-.type-Workshop { background-color: #ff9800; } /* Orange */
-.type-Talk { background-color: #4caf50; } /* Green */
-.type-Panel { background-color: #9c27b0; } /* Purple */
-.type-Social { background-color: #03a9f4; } /* Light Blue */
+/* Delete Button for each task */
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
 
-/* 🖥️ DESKTOP/TABLET ADAPTATION (Media Query) */
-@media (min-width: 768px) {
-    /* DESKTOP LAYOUT: Switch to a side-by-side card layout */
-    .day-events {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-        gap: 2rem;
-    }
-
-    .event-card {
-        flex-direction: row; /* Horizontal layout for larger screens */
-        min-height: 200px;
-    }
-
-    .event-image-wrapper {
-        width: 40%; /* Image takes 40% of the card width */
-        aspect-ratio: auto; /* Allow height to be determined by content */
-    }
-
-    .event-content {
-        width: 60%; /* Content takes 60% of the card width */
-    }
-
-    .page-header h1 {
-        font-size: 3rem;
-    }
+.delete-btn:hover {
+    background-color: #d32f2f;
 }
