@@ -5,35 +5,35 @@ const events = [
         type: "Keynote",
         date: "2025-11-20T09:00:00",
         description: "Join industry visionary Dr. Evelyn Reed as she unveils the next decade of AI innovation.",
-        image: "images/keynote.jpg"
+        image: "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8T3BlbmluZyUyMEtleW5vdGUlM0ElMjBUaGUlMjBGdXR1cmUlMjBvZiUyMEFJfGVufDB8fDB8fHww"
     },
     {
         title: "Advanced JavaScript Workshop",
         type: "Workshop",
         date: "2025-11-20T10:30:00",
         description: "A 3-hour, hands-on deep-dive into asynchronous JavaScript, Promises, and modern ES6+ features.",
-        image: "images/workshop-js.jpg"
+        image: "https://media.istockphoto.com/id/2236866949/photo/diverse-group-of-it-professionals-presenting-coding-and-network-security-in-office-at-night.webp?a=1&b=1&s=612x612&w=0&k=20&c=ekYxpjMfcZGOu3ngyvFTfFWslIN4x1cTrpGz9HBVmwo="
     },
     {
         title: "Cybersecurity in the Cloud Era",
         type: "Talk",
         date: "2025-11-20T11:00:00",
         description: "Explore the evolving landscape of cloud security threats and proactive defense strategies.",
-        image: "images/cybersecurity.jpg"
+        image: "https://media.istockphoto.com/id/1434293435/photo/blue-digital-cloud-computing-cyber-security-digital-data-network-protection-future-technology.webp?a=1&b=1&s=612x612&w=0&k=20&c=CSIAfSF2hroL-qW4ayiggOYesH69gsZFxkQy0QXLgAY="
     },
     {
         title: "Introduction to Quantum Computing",
         type: "Talk",
         date: "2025-11-20T14:00:00",
         description: "A beginner-friendly overview of quantum mechanics and its potential to revolutionize computing.",
-        image: "images/quantum.jpg"
+        image: "https://media.istockphoto.com/id/1347310377/photo/quantum-computing-background-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=e_ZWdqUcjL0rVNTtgN2x299JCq7ermy0BMq1cniG-AM="
     },
     {
         title: "Networking Mixer & Welcome Reception",
         type: "Social",
         date: "2025-11-20T17:00:00",
         description: "Connect with fellow attendees, speakers, and sponsors over drinks and appetizers.",
-        image: "images/mixer.jpg"
+        image: "https://images.unsplash.com/photo-1643812409758-ff93e9fa910e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV0d29ya2luZyUyME1peGVyJTIwJTI2JTIwV2VsY29tZSUyMFJlY2VwdGlvbnxlbnwwfHwwfHx8MA%3D%3D"
     },
 
     // --- Day 2: Nov 21, 2025 ---
@@ -42,28 +42,28 @@ const events = [
         type: "Talk",
         date: "2025-11-21T09:30:00",
         description: "A critical discussion on the societal impact and ethical responsibilities in ML development.",
-        image: "images/ethics.jpg"
+        image: "https://media.istockphoto.com/id/2204139183/photo/ai-ethics-or-ai-law-concept-developing-ai-codes-of-ethics-compliance-regulation-standard.webp?a=1&b=1&s=612x612&w=0&k=20&c=aSq7zaHiUWHGinxP0hotAbgn2a0XBIQUFf6scZXHNnI="
     },
     {
         title: "Building Scalable Web Apps with Microservices",
         type: "Talk",
         date: "2025-11-21T10:30:00",
         description: "Learn the principles of microservices from lead engineers at a top tech company.",
-        image: "images/scalable.jpg"
+        image: "https://images.unsplash.com/photo-1564798605859-a4ab4a561b2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fEJ1aWxkaW5nJTIwU2NhbGFibGUlMjBXZWIlMjBBcHBzJTIwd2l0aCUyME1pY3Jvc2VydmljZXN8ZW58MHx8MHx8fDA%3D"
     },
     {
         title: "Mastering React Performance",
         type: "Workshop",
         date: "2025-11-21T13:00:00",
         description: "Optimize your React applications by learning memoization, code splitting, and bundle analysis.",
-        image: "images/react.jpg"
+        image: "https://media.istockphoto.com/id/1226991705/photo/on-stage-successful-female-executive-and-male-manager-present-new-product-show-infographics.webp?a=1&b=1&s=612x612&w=0&k=20&c=K7vuj-NrY9Fz7TSEapmByF9Jk30nlQMitndks2waYDA="
     },
     {
         title: "The Psychology of User Experience (UX)",
         type: "Talk",
         date: "2025-11-21T14:00:00",
         description: "Understand the cognitive biases and psychological principles that drive effective UX design.",
-        image: "images/psychology-ux.jpg"
+        image: "https://plus.unsplash.com/premium_photo-1733306548826-95daff988ae6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8VGhlJTIwUHN5Y2hvbG9neSUyMG9mJTIwVXNlciUyMEV4cGVyaWVuY2UlMjAoVVgpfGVufDB8fDB8fHww"
     },
     {
         title: "Panel: The Future of Remote Work in Tech",
