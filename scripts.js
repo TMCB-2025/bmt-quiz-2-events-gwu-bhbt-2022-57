@@ -137,7 +137,7 @@ const events = [
         type: "Workshop",
         date: "2025-11-20T13:00:00",
         description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
-        image: "images/mobile-first.jpg"
+        image: "images/mobile-first.jpg" // I've added this image property
     },
     {
         title: "Closing Ceremony & Awards",
