@@ -1,32 +1,13 @@
 /* Custom font import and application */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
     
-/* Base styles for Light Mode */
-:root {
-    --bg-primary: #f9fafb; /* gray-50 */
-    --bg-secondary: #ffffff; /* white */
-    --text-primary: #826464; /* gray-800 */
-    --text-secondary: #4b5563; /* gray-600 */
-}
-
+/* Global font application: Overrides default font */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.5s, color 0.5s;
+    /* Tailwind handles all background and text colors via utility classes in the HTML. */
 }
 
-/* Dark Mode Styles */
-.dark {
-    --bg-primary: #111827; /* gray-900 */
-    --bg-secondary: #1f2937; /* gray-800 */
-    --text-primary: #f3f4f6; /* gray-100 */
-    --text-secondary: #9ca3af; /* gray-400 */
-}
-
-.dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.2); }
-
-.event-card {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+/* Custom Dark Mode Shadow: Overrides default shadow on elements with shadow-lg class in dark mode */
+.dark .shadow-lg { 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.2); 
 }
