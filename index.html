@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechCon 2025 Event Schedule</title>
+    <title>The Singularity Summit 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     
     <script>
         tailwind.config = {
             darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        // Define custom colors to match the CSS variables for use in Tailwind classes
+                        'accent-cyan': 'var(--color-accent)',
+                    }
+                }
+            }
         }
     </script>
 </head>
-<body class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+<body class="min-h-screen flex flex-col transition-colors duration-500">
 
-    <header class="bg-indigo-700 shadow-lg sticky top-0 z-20 dark:bg-gray-900">
+    <header class="bg-header shadow-xl sticky top-0 z-20 transition-colors duration-500" style="background-color: var(--bg-header);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold text-white tracking-tight">
-                TechCon 2025 Event Schedule
+            <h1 class="main-header-title font-black text-white tracking-tight">
+                The Singularity Summit
             </h1>
             <div class="flex items-center space-x-4">
                 <nav class="hidden sm:flex space-x-3">
-                    <a href="#schedule" class="text-indigo-200 hover:text-white transition duration-300 px-3 py-2 rounded-lg font-medium">Schedule</a>
-                    <a href="#speakers" class="text-indigo-200 hover:text-white transition duration-300 px-3 py-2 rounded-lg font-medium">Speakers</a>
+                    <a href="#schedule" class="text-green-200 hover:text-white transition duration-300 px-3 py-2 rounded-lg font-medium">Agenda</a>
+                    <a href="#speakers" class="text-green-200 hover:text-white transition duration-300 px-3 py-2 rounded-lg font-medium">Visionaries</a>
                 </nav>
                 
-                <button id="theme-toggle" class="p-2 rounded-full text-indigo-200 hover:text-white hover:bg-indigo-600 dark:hover:bg-gray-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-white">
+                <button id="theme-toggle" class="p-2 rounded-full text-green-200 hover:text-white hover:bg-green-600 dark:hover:bg-gray-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-white">
                     <svg id="sun-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                     </svg>
@@ -35,7 +43,7 @@
                     </svg>
                 </button>
 
-                <a href="#register" class="bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300 px-4 py-2 rounded-lg font-medium shadow-md hidden lg:inline-block">Register Now</a>
+                <a href="#register" class="bg-accent-cyan text-white hover:bg-cyan-600 transition duration-300 px-4 py-2 rounded-lg font-medium shadow-md hidden lg:inline-block">Secure Your Spot</a>
             </div>
         </div>
     </header>
@@ -43,61 +51,62 @@
     <main class="flex-grow max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8">
         
         <section id="schedule-intro" class="mb-12 text-center py-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500 dark:from-indigo-400 dark:to-purple-300 mb-2">
-                Full Conference Program
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-accent-cyan dark:from-green-400 dark:to-cyan-300 mb-2">
+                A Glimpse into Tomorrow
             </h2>
-            <p class="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-                Discover all the cutting-edge talks, immersive workshops, and valuable networking sessions for TechCon 2025.
+            <p class="text-xl text-secondary max-w-2xl mx-auto" style="color: var(--text-secondary);">
+                Explore the definitive agenda of breakthroughs, workshops, and high-level dialogue shaping the future of technology.
             </p>
         </section>
 
-        <div class="mb-8 p-4 bg-white dark:bg-gray-800 shadow-xl rounded-xl">
+        <div class="mb-8 p-4 rounded-xl shadow-xl" style="background-color: var(--bg-secondary);">
             <label for="event-search" class="sr-only">Search Events</label>
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <input type="text" id="event-search" oninput="handleSearch()" placeholder="Filter by Title, Speaker, or Track..." 
-                        class="w-full py-3 pl-10 pr-4 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                <input type="text" id="event-search" oninput="handleSearch()" placeholder="Search Topics, Speakers, or Streams..." 
+                        class="w-full py-3 pl-10 pr-4 border border-gray-300 dark:border-gray-600 rounded-lg text-primary bg-white dark:bg-gray-700 focus:ring-accent-cyan focus:border-accent-cyan transition duration-150" style="color: var(--text-primary); background-color: var(--bg-primary);">
             </div>
         </div>
         
         <section id="event-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-inner text-gray-500 dark:text-gray-400 lg:col-span-3">
-                <p>Loading schedule...</p>
+            <div class="text-center p-8 rounded-xl shadow-inner text-secondary lg:col-span-3" style="background-color: var(--bg-secondary); color: var(--text-secondary);">
+                <p>Initializing cosmic timeline...</p>
             </div>
         </section>
 
-        <p id="not-found-message" class="text-center text-xl text-gray-500 dark:text-gray-400 mt-10 hidden lg:col-span-3">
-            No events match your search criteria. Try a different query.
+        <p id="not-found-message" class="text-center text-xl text-secondary mt-10 hidden lg:col-span-3" style="color: var(--text-secondary);">
+            No future realities match your current query. Try redefining your search parameters.
         </p>
 
     </main>
 
-    <footer class="bg-gray-800 dark:bg-gray-950 mt-12 py-6 border-t border-indigo-700 dark:border-indigo-900">
+    <footer class="mt-12 py-6 border-t border-green-700 dark:border-green-900" style="background-color: var(--bg-header);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm text-gray-400">
-                &copy; 2025 TechCon. All rights reserved. Built for professional submission.
+            <p class="text-sm text-green-200">
+                &copy; 2025 The Singularity Summit. All rights reserved. Accelerating human potential.
             </p>
         </div>
     </footer>
 
     <script>
-        // --- High-Quality, Multi-Color SVG Data URLs (Zero-Error Image Loading) ---
-        const AI_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZWM0ODk5Ii8+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iNyIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iMjMiIHI9IjQiIGZpbGw9IiNmZmYiLz48bGluZSB4MT0iMTkiIHkxPSIxNSIgeDI9IjQxIiB5Mj0iNyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMTkiIHkxPSIxNSIgeDI9IjQxIiB5Mj0iMjMiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+";
-        const CODE_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMWE0Zjk1Ii8+PHBhdGggZD0iTTE4IDEwTDIgMTVMMTggMjBNMjQgMTVIMzZNNDIgMTBMMTggMjBNNDIgMjBMMzIgMTVMMTggMjAiIHN0cm9rZT0iI2FkZGVkZSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE4IDEwTDIgMTUgTDE4IDIwTTYyIDEwTDQ1IDE1TDYyIDIwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==";
-        const NETWORKING_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMGRhZjk1Ii8+PGNpcmNsZSBjeD0iMTUiIGN5PSIxMCIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjM1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjIwIiByPSI0IiBmaWxsPSIjZmZmIi8+PGxpbmUgeDE9IjE5IiB5MT0iMTAiIHgyPSIzMSIgeTI9IjE1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjgiLz48bGluZSB4MT0iMzkiIHkxPSIxNSIgeDI9IjQxIiB5Mj0iMjAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuOCIvPjwvc3ZnPg==";
-        const SECURITY_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZjZTE4Ii8+PHBhdGggZD0iTTI3IDEwQzI3IDcgMjggNSA0NSA1VjI1SDI1VjIwQzI1IDE4IDI3IDE3IDI3IDE3VjEwWiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIxMCIgeT0iMTMiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNSIgcng9IjMiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+";
-        const DEFI_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjNmM0N2ZjIi8+PHJlY3QgeD0iMTAiIHk9IjUiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjM1IiB5PSIxNSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMjIiIHk9IjIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNmZmYiLz48bGluZSB4MT0iMjAiIHkxPSIxMCIgeDI9IjM1IiB5Mj0iMjAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjQ1IiB5MT0iMjAiIHgyPSI1OCIgeTI9IjI3IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjUiLz48L3N2Zz4=";
+        // --- Image Data URLs updated for new tracks ---
+        const QUANTUM_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjNDFhNGZhIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iNyIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iMjMiIHI9IjQiIGZpbGw9IiNmZmYiLz48bGluZSB4MT0iMTkiIHkxPSIxNSIgeDI9IjQxIiB5Mj0iNyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48bGluZSB4MT0iMTkiIHkxPSIxNSIgeDI9IjQxIiB5Mj0iMjMiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+";
+        const NEUROTECH_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZjA1MjU1Ii8+PHBhdGggZD0iTTEwIDE1QzEwIDUgNTAgNSA1MCAxNlM1MCAyNSA1MCAyNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjE1IiByPSI0IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTMwIDE1TDMwIDEwTDM1IDEwTTY1IDE1TDM5IDE1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==";
+        const FUTURE_MOBILITY_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMGU5YmFhIi8+PHBhdGggZD0iTTIgMTVMNSA1TDE1IDVMNDUgMjVINTggMjUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQgMTlINDZWMjRINDEwVjE5WiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=";
+        const AI_ETHICS_IMAGE = "data:image:svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjYTMwZTE1Ii8+PHBhdGggZD0iTTMwIDEwVjIwTTIwIDE1SDQ0IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0zMCAxMCBMIDMwIDIwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMTAiIHk9IjUiIHdpZHRoPSI0MCIgaGVpZ2h0PSIyMCIgcng9IjUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+";
+        const SOCIAL_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMTdhNjZiIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iNiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNmZmYiLz48bGluZSB4MT0iMjEiIHkxPSIxNSIgeDI9IjM5IiB5Mj0iMTUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+";
+
         
-        // Mock Data for the SPA
+        // Mock Data for the SPA (Updated Content)
         const events = [
-            { id: 1, title: "Opening Keynote: The Future of AI", time: "9:00 AM - 10:00 AM", speaker: "Dr. Evelyn Reed", track: "Main Stage", color: "bg-red-600 dark:bg-red-800", image: AI_IMAGE },
-            { id: 2, title: "Workshop: Advanced React Hooks", time: "10:30 AM - 12:00 PM", speaker: "Jane Doe", track: "Web Development", color: "bg-blue-600 dark:bg-blue-800", image: CODE_IMAGE },
-            { id: 3, title: "Networking Lunch & Poster Session", time: "12:00 PM - 1:30 PM", speaker: "All Attendees", track: "Networking", color: "bg-green-600 dark:bg-green-800", image: NETWORKING_IMAGE },
-            { id: 4, title: "Panel: Cybersecurity in the Cloud Age", time: "1:30 PM - 2:30 PM", speaker: "Experts Panel", track: "Security", color: "bg-yellow-600 dark:bg-yellow-800", image: SECURITY_IMAGE },
-            { id: 5, title: "Closing Session: Decentralized Finance", time: "3:00 PM - 4:00 PM", speaker: "Mark Cuban", track: "Blockchain", color: "bg-purple-600 dark:bg-purple-800", image: DEFI_IMAGE },
-            { id: 6, title: "Breakout: TypeScript Deep Dive", time: "4:00 PM - 5:00 PM", speaker: "Alicia Smith", track: "Web Development", color: "bg-blue-600 dark:bg-blue-800", image: CODE_IMAGE }
+            { id: 1, title: "Keynote: The Quantum Leap Forward", time: "9:00 AM - 10:00 AM", speaker: "Dr. Alistair Chen", track: "Quantum Computing", color: "bg-blue-600 dark:bg-blue-800", image: QUANTUM_IMAGE },
+            { id: 2, title: "Workshop: Building with Neurotech APIs", time: "10:30 AM - 12:00 PM", speaker: "Sasha Varma", track: "Bio & Neurotech", color: "bg-red-600 dark:bg-red-800", image: NEUROTECH_IMAGE },
+            { id: 3, title: "Future Founders Mixer & VR Demos", time: "12:00 PM - 1:30 PM", speaker: "Summit Organizers", track: "Social & Future", color: "bg-green-700 dark:bg-green-900", image: SOCIAL_IMAGE },
+            { id: 4, title: "Panel: AI Ethics & AGI Governance", time: "1:30 PM - 2:30 PM", speaker: "The Oversight Board", track: "Regulation & Policy", color: "bg-purple-600 dark:bg-purple-800", image: AI_ETHICS_IMAGE },
+            { id: 5, title: "Breakout: Autonomous Vehicle Stacks", time: "3:00 PM - 4:00 PM", speaker: "Kira Dubois", track: "Future Mobility", color: "bg-cyan-600 dark:bg-cyan-800", image: FUTURE_MOBILITY_IMAGE },
+            { id: 6, title: "Closing: Roadmap to Mars Colonization", time: "4:00 PM - 5:00 PM", speaker: "Elon Tusk", track: "Quantum Computing", color: "bg-blue-600 dark:bg-blue-800", image: QUANTUM_IMAGE }
         ];
 
         /**
@@ -106,9 +115,9 @@
          * @returns {string} HTML string for the event card.
          */
         function createEventCard(event) {
-            // New Card Appearance Classes applied here
+            // Updated Card Appearance Classes and uses CSS variables for base background/text
             return `
-                <article class="event-card bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden relative border border-gray-200 dark:border-gray-700 transform hover:-translate-y-1">
+                <article class="event-card rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden relative border border-gray-200 dark:border-gray-700 transform hover:-translate-y-1" style="background-color: var(--bg-secondary); color: var(--text-primary);">
                     
                     <img src="${event.image}" alt="${event.title} icon" class="w-full h-40 object-cover" 
                                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMuZ29yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTcgOWgxME03IDEzaDEwTTcgMTdoMTBNMTIgMi41TDcgNC45VjcuM0wxMiA5LjdMMTcgNy4zVjQuOUwxMiAyLjVabTcgNy41VjE4LjVIMTBWMTYuNUM3IDE2LjUgNiAxOC41IDYgMTguNVYyMi41SDE4VjE4LjVDMTggMTguNSA3IDE2LjUgNyAxNi41WiIgc3Ryb2tlPSIjOTdhM2FmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg=='">
@@ -118,44 +127,37 @@
                     </div>
                     
                     <div class="p-6">
-                        <p class="text-sm font-semibold text-indigo-500 dark:text-indigo-400 mb-2">${event.time}</p>
-                        <h3 class="text-xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 leading-snug">
+                        <p class="text-sm font-semibold mb-2" style="color: var(--color-accent);">${event.time}</p>
+                        <h3 class="font-extrabold mb-4 leading-snug">
                             ${event.title}
                         </h3>
                         
-                        <div class="flex items-center text-md text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                        <div class="flex items-center text-md mt-2" style="color: var(--text-secondary);">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="color: var(--color-accent);"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                             <span>${event.speaker}</span>
                         </div>
                         
                         <button onclick="showDetails(${event.id})" 
-                            class="mt-6 w-full py-3 bg-indigo-600 text-white rounded-lg font-bold shadow-md hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400">
-                            View Session Details
+                            class="mt-6 w-full py-3 bg-accent-cyan text-white rounded-lg font-bold shadow-md hover:bg-cyan-600 transition duration-200 focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
+                            Explore Session
                         </button>
                     </div>
                 </article>
             `;
         }
 
-        /**
-         * Renders the specified list of events into the container.
-         * @param {Array<object>} eventsToRender - The array of events to display.
-         */
+        // Rest of the functions (renderEvents, handleSearch, setupDarkMode, showDetails) remain the same
+        
         function renderEvents(eventsToRender) {
             const container = document.getElementById('event-container');
             const notFoundMessage = document.getElementById('not-found-message');
-            
             if (!container) return console.error('Event container not found.');
-
             container.innerHTML = ''; 
-
             if (eventsToRender.length === 0) {
                 notFoundMessage.classList.remove('hidden');
             } else {
                 notFoundMessage.classList.add('hidden');
             }
-            
-            // Loop through and append
             eventsToRender.forEach(event => {
                 const cardHtml = createEventCard(event);
                 const tempDiv = document.createElement('div');
@@ -173,9 +175,6 @@
             });
         }
 
-        /**
-         * Handles the live filtering/search based on user input.
-         */
         function handleSearch() {
             const searchInput = document.getElementById('event-search');
             const query = (searchInput?.value || '').toLowerCase().trim();
@@ -184,16 +183,11 @@
                 const titleMatch = event.title.toLowerCase().includes(query);
                 const speakerMatch = event.speaker.toLowerCase().includes(query);
                 const trackMatch = event.track.toLowerCase().includes(query);
-                
                 return titleMatch || speakerMatch || trackMatch;
             });
-
             renderEvents(filteredEvents);
         }
         
-        /**
-         * Manages the Dark Mode state and toggles the class on the HTML element.
-         */
         function setupDarkMode() {
             const htmlElement = document.documentElement;
             const toggleButton = document.getElementById('theme-toggle');
@@ -205,14 +199,12 @@
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             let currentTheme = 'light';
             
-            // Check localStorage first, then system preference
             if (localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDark)) {
                  currentTheme = 'dark';
             } else if (localStorage.getItem('theme') === 'light') {
                 currentTheme = 'light';
             }
 
-            // Function to apply the theme
             const applyTheme = (theme) => {
                 if (theme === 'dark') {
                     htmlElement.classList.add('dark');
@@ -227,20 +219,14 @@
                 }
             };
 
-            // Apply initial theme
             applyTheme(currentTheme);
 
-            // Toggle listener
             toggleButton.addEventListener('click', () => {
                 const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
                 applyTheme(newTheme);
             });
         }
 
-        /**
-         * Shows event details in a custom, styled modal.
-         * @param {number} eventId - The ID of the event.
-         */
         function showDetails(eventId) {
             const event = events.find(e => e.id === eventId);
             if (!event) return;
@@ -251,28 +237,26 @@
             messageBox.setAttribute('aria-modal', 'true');
             
             messageBox.innerHTML = `
-                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-2xl max-w-lg w-full transform transition-transform duration-300 scale-95 border-t-8 border-indigo-500">
-                    <h4 class="text-3xl font-extrabold mb-4 text-indigo-700 dark:text-indigo-400">${event.title}</h4>
-                    <p class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">${event.time}</p>
-                    <p class="text-md text-gray-600 dark:text-gray-400 mb-4">Speaker: <span class="font-semibold">${event.speaker}</span></p>
+                <div class="bg-secondary p-8 rounded-xl shadow-2xl max-w-lg w-full transform transition-transform duration-300 scale-95 border-t-8 border-accent-cyan" style="background-color: var(--bg-secondary);">
+                    <h4 class="text-3xl font-extrabold mb-4" style="color: var(--color-accent);">${event.title}</h4>
+                    <p class="text-lg font-medium mb-2" style="color: var(--text-secondary);">${event.time}</p>
+                    <p class="text-md mb-4" style="color: var(--text-secondary);">Speaker: <span class="font-semibold">${event.speaker}</span></p>
                     <div class="${event.color} inline-block px-3 py-1 rounded-full text-white font-semibold text-sm mb-6">${event.track}</div>
-                    <p class="text-gray-800 dark:text-gray-200 leading-relaxed">This session will dive deep into the practical applications and theoretical underpinnings of ${event.title.toLowerCase()}. This high-level summary ensures the core concepts are covered effectively.</p>
+                    <p class="leading-relaxed" style="color: var(--text-primary);">This session will dive deep into the practical applications and theoretical underpinnings of ${event.title.toLowerCase()}. This high-level summary ensures the core concepts are covered effectively.</p>
                     <button onclick="this.closest('.fixed').remove()" 
-                        class="mt-8 w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400">
+                        class="mt-8 w-full py-3 bg-accent-cyan text-white rounded-lg font-bold hover:bg-cyan-600 transition duration-200 focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
                         Close
                     </button>
                 </div>
             `;
             document.body.appendChild(messageBox);
             
-            // Animate in
             setTimeout(() => {
                 messageBox.classList.remove('opacity-0');
                 messageBox.querySelector('div').classList.remove('scale-95');
             }, 10);
         }
 
-        // Run setup and rendering functions once the document is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 setupDarkMode();
