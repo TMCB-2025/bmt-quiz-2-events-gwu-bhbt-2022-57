@@ -146,5 +146,4 @@ const events = [
         description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
         image: "images/awards.jpg"
     }
-    
 ];
