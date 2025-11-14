@@ -22,25 +22,11 @@ const events = [
         image: "images/cybersecurity.jpg"
     },
     {
-        title: "Mobile-First Design in Practice",
-        type: "Workshop",
-        date: "2025-11-20T13:00:00",
-        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
-        image: "images/mobile-first.jpg"
-    },
-    {
         title: "Introduction to Quantum Computing",
         type: "Talk",
         date: "2025-11-20T14:00:00",
         description: "A beginner-friendly overview of quantum mechanics and its potential to revolutionize computing.",
         image: "images/quantum.jpg"
-    },
-    {
-        title: "DevOps Culture and Tooling",
-        type: "Talk",
-        date: "2025-11-20T15:30:00",
-        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
-        image: "images/devops.jpg"
     },
     {
         title: "Networking Mixer & Welcome Reception",
@@ -78,13 +64,6 @@ const events = [
         date: "2025-11-21T14:00:00",
         description: "Understand the cognitive biases and psychological principles that drive effective UX design.",
         image: "images/psychology-ux.jpg"
-    },
-    {
-        title: "API Design Best Practices",
-        type: "Talk",
-        date: "2025-11-21T15:00:00",
-        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
-        image: "images/api.jpg"
     },
     {
         title: "Panel: The Future of Remote Work in Tech",
@@ -130,6 +109,36 @@ const events = [
         description: "An open Q&A session with a panel of the conference's top speakers. No topic is off-limits!",
         image: "images/panel-ama.jpg"
     },
+
+    // --- Bonus / Past Events for testing ---
+    {
+        title: "Pre-Conference Hackathon",
+        type: "Social",
+        date: "2025-11-19T09:00:00",
+        description: "A 24-hour coding challenge with prizes for the most innovative projects. Kicks off before the main event.",
+        image: "images/hackathon.jpg"
+    },
+    {
+        title: "API Design Best Practices",
+        type: "Talk",
+        date: "2025-11-21T15:00:00",
+        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
+        image: "images/api.jpg"
+    },
+    {
+        title: "DevOps Culture and Tooling",
+        type: "Talk",
+        date: "2025-11-20T15:30:00",
+        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
+        image: "images/devops.jpg"
+    },
+    {
+        title: "Mobile-First Design in Practice",
+        type: "Workshop",
+        date: "2025-11-20T13:00:00",
+        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
+        image: "images/mobile-first.jpg"
+    },
     {
         title: "Closing Ceremony & Awards",
         type: "Social",
@@ -137,59 +146,4 @@ const events = [
         description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
         image: "images/awards.jpg"
     }
-    // Note: Pre-Conference Hackathon removed as it's not part of the main 3-day schedule.
 ];
-
-// Function to format the date and time
-function formatEventDateTime(dateString) {
-    const date = new Date(dateString);
-    const optionsDate = { month: 'short', day: 'numeric' };
-    const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: true };
-    
-    const formattedDate = date.toLocaleDateString('en-US', optionsDate);
-    const formattedTime = date.toLocaleTimeString('en-US', optionsTime);
-
-    return `${formattedDate} at ${formattedTime}`;
-}
-
-// Function to dynamically render the event cards
-function renderEvents() {
-    const eventContainer = document.getElementById('event-container');
-    
-    if (!eventContainer) {
-        console.error("Event container element not found!");
-        return;
-    }
-
-    // Sort events by date and time
-    events.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    events.forEach(event => {
-        // 1. Create the main card container
-        const card = document.createElement('div');
-        card.classList.add('event-card');
-
-        // 2. Format the date and time string
-        const dateTimeFormatted = formatEventDateTime(event.date);
-
-        // 3. Populate the card with HTML content using template literals
-        // The event.type is used as a class for type-specific styling (see CSS)
-        card.innerHTML = `
-            <img src="${event.image}" alt="${event.title}">
-            <div class="card-content">
-                <h3>${event.title}</h3>
-                <p>${event.description}</p>
-            </div>
-            <div class="card-meta">
-                <span class="event-type ${event.type}">${event.type}</span>
-                <span class="event-time">${dateTimeFormatted}</span>
-            </div>
-        `;
-
-        // 4. Append the completed card to the container
-        eventContainer.appendChild(card);
-    });
-}
-
-// Run the function when the page content is fully loaded
-document.addEventListener('DOMContentLoaded', renderEvents);
