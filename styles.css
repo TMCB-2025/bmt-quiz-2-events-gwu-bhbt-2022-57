@@ -1,369 +1,145 @@
-/*
- * Core Styling: CSS Variables and Resets (Level 3 & 4)
- */
-
-/* Base Colors and Theming */
+/* General Reset and Typography */
 :root {
-    /* Light Mode Defaults */
-    --color-background: #ffffff;
-    --color-text-primary: #1c1c1e;
-    --color-text-secondary: #636366;
-    --color-accent: #007aff; /* Apple Blue */
-    --color-card-background: #f8f8fa;
-    --color-card-shadow: rgba(0, 0, 0, 0.08);
-    --color-border: #e5e5e5;
-    --color-button-bg: #e0e0e6;
-    --color-button-text: var(--color-text-primary);
-    --color-hover-bg: #d0d0d8;
-
-    /* Type-specific colors (for flair) */
-    --type-keynote: #f59e0b; /* Amber */
-    --type-talk: #10b981; /* Emerald */
-    --type-workshop: #3b82f6; /* Blue */
-    --type-panel: #8b5cf6; /* Violet */
-    --type-social: #f43f5e; /* Rose */
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #2196F3; /* Blue */
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --card-bg: #fff;
 }
 
-/* Dark Mode Overrides (Controlled by JS/localStorage) */
-html[data-theme='dark'] {
-    --color-background: #1c1c1e;
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #a9a9b0;
-    --color-accent: #4893ff; /* Lighter Blue */
-    --color-card-background: #2c2c2e;
-    --color-card-shadow: rgba(255, 255, 255, 0.05);
-    --color-border: #3a3a3c;
-    --color-button-bg: #3a3a3c;
-    --color-button-text: #ffffff;
-    --color-hover-bg: #4a4a4c;
-}
-
-/* Basic Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Base Body and Typography (Level 1) */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--color-background);
-    color: var(--color-text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
-    transition: background-color 0.4s ease, color 0.4s ease; /* Smooth theme transition */
 }
 
-h1, h2, h3, h4, h5 {
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/*
- * Header and Footer Styling
- */
+/* Header Styling */
 header {
-    background-color: var(--color-card-background);
-    border-bottom: 1px solid var(--color-border);
-    padding: 20px;
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 1.8rem;
-    color: var(--color-accent);
-    font-weight: 900;
+    margin-bottom: 10px;
+    font-size: 2.5em;
 }
 
-footer {
+/* Main Content and Event Container */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+main h2 {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-}
-
-/*
- * Theme Toggle Button (Level 3)
- */
-#theme-toggle {
-    background: var(--color-button-bg);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background 0.3s;
-}
-
-#theme-toggle:hover {
-    background: var(--color-hover-bg);
-}
-
-.sun-icon,.moon-icon {
-    display: none;
-}
-html[data-theme='light'].sun-icon { display: inline-block; }
-html[data-theme='dark'].moon-icon { display: inline-block; }
-
-
-/*
- * Search and Filter Controls (Level 2 & 7)
- */
-#controls-section {
-    padding: 20px 0;
-}
-
-.search-and-filter-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     margin-bottom: 30px;
+    color: #444;
 }
 
-#event-search {
-    width: 100%;
-    padding: 12px 15px;
-    font-size: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background-color: var(--color-card-background);
-    color: var(--color-text-primary);
-    transition: border-color 0.3s;
-}
-
-#event-search:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
-}
-
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.filter-btn {
-    padding: 8px 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 20px;
-    background-color: var(--color-card-background);
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.filter-btn:hover:not(.active) {
-    background-color: var(--color-hover-bg);
-}
-
-.filter-btn.active {
-    background-color: var(--color-accent);
-    color: white;
-    border-color: var(--color-accent);
-    font-weight: 700;
-}
-
-.filter-btn:focus-visible, #theme-toggle:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 5px;
-}
-
-/* No Results Message (Level 9) */
-#no-results {
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 50px 0;
-    color: var(--color-text-secondary);
-    font-style: italic;
-}
-.hidden {
-    display: none;
-}
-
-/*
- * Event Card Grid Layout (Core Requirement: Responsive)
- */
+/* Responsive Grid Layout */
 #event-container {
     display: grid;
-    /* Mobile First: Single column by default */
+    /* Default: Single column on mobile */
     grid-template-columns: 1fr;
-    gap: 30px; /* Consistent spacing [3] */
+    gap: 30px;
 }
 
-/* Tablet Layout (2 Columns) */
+/* Tablet and Desktop Layout: 2 columns */
 @media (min-width: 768px) {
     #event-container {
-        /* CSS Grid with fractional units for equal-width columns [3] */
-        grid-template-columns: 1fr 1fr;
-    }
-
-   .search-and-filter-bar {
-        flex-direction: row;
-        align-items: center;
-    }
-    #event-search {
-        flex-grow: 1;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop Layout (3 Columns) */
+/* Larger Desktop Layout: 3 columns */
 @media (min-width: 1024px) {
     #event-container {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-
-/*
- * Event Card Component Styling (Level 1: Polished UI)
- */
+/* Individual Event Card Styling */
 .event-card {
-    background-color: var(--color-card-background);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px var(--color-card-shadow);
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden; /* Ensures image corners are rounded */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    
-    /* Level 1: Subtle GPU-accelerated transition for lift effect [10] */
-    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), 
-                box-shadow 0.4s ease-out;
 }
 
 .event-card:hover {
-    /* Lift effect: moves up and increases shadow [10] */
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--color-card-shadow);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.card-image-container {
-    height: 180px;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.card-image {
+.event-card img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
+    display: block;
 }
 
 .card-content {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Allows content area to fill remaining space */
 }
 
-.event-title {
-    font-size: 1.4rem;
+.card-content h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
     margin-bottom: 10px;
-    color: var(--color-text-primary);
 }
 
-.event-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.card-content p {
+    font-size: 0.95em;
     margin-bottom: 15px;
 }
 
-.event-date,.event-time {
-    font-weight: 400;
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
+.card-meta {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: #666;
+    background-color: #fafafa;
 }
 
 .event-type {
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
     color: white;
-    /* Default to Keynote color, JS will override based on type */
-    background-color: var(--type-keynote); 
 }
 
-/* Assigning specific colors for event types */
-.type-keynote { background-color: var(--type-keynote); }
-.type-talk { background-color: var(--type-talk); }
-.type-workshop { background-color: var(--type-workshop); }
-.type-panel { background-color: var(--type-panel); }
-.type-social { background-color: var(--type-social); }
+/* Type-specific colors */
+.Keynote { background-color: #E91E63; } /* Pink */
+.Workshop { background-color: #FF9800; } /* Orange */
+.Talk { background-color: #2196F3; } /* Blue */
+.Panel { background-color: #00BCD4; } /* Cyan */
+.Social { background-color: #8BC34A; } /* Light Green */
 
 
-.event-description {
-    color: var(--color-text-secondary);
-    margin-bottom: 20px;
-    flex-grow: 1; /* Pushes button to bottom */
-}
-
-/* Highlight for Search Results (Level 7) */
-.highlight {
-    background-color: rgba(255, 255, 0, 0.7); /* Standard yellow highlight */
-    color: var(--color-text-primary);
-    padding: 0 2px;
-    border-radius: 2px;
-}
-html[data-theme='dark'].highlight {
-    background-color: rgba(255, 255, 0, 0.3); /* Subtler dark mode highlight */
-}
-
-.card-actions {
-    margin-top: auto; /* Ensure buttons are at the bottom */
-    padding-top: 15px;
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    gap: 10px;
-}
-
-.add-to-calendar-btn,.countdown-display {
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    flex: 1;
+/* Footer Styling */
+footer {
     text-align: center;
-}
-
-.add-to-calendar-btn {
-    background-color: var(--color-accent);
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #333;
     color: white;
-    border: none;
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-
-.add-to-calendar-btn:hover {
-    opacity: 0.8;
-}
-
-.countdown-display {
-    /* Style for Level 6 */
-    background-color: var(--color-button-bg);
-    color: var(--color-text-primary);
-    font-weight: 400;
-    border: 1px solid var(--color-border);
-    user-select: none;
+    font-size: 0.8em;
 }

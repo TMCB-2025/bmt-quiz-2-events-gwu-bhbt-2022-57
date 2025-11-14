@@ -5,35 +5,49 @@ const events = [
         type: "Keynote",
         date: "2025-11-20T09:00:00",
         description: "Join industry visionary Dr. Evelyn Reed as she unveils the next decade of AI innovation.",
-        image: "https://images.unsplash.com/photo-1756908992154-c8a89f5e517f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8T3BlbmluZyUyMEtleW5vdGUlM0ElMjBUaGUlMjBGdXR1cmUlMjBvZiUyMEFJfGVufDB8fDB8fHww"
+        image: "images/keynote.jpg"
     },
     {
         title: "Advanced JavaScript Workshop",
         type: "Workshop",
         date: "2025-11-20T10:30:00",
         description: "A 3-hour, hands-on deep-dive into asynchronous JavaScript, Promises, and modern ES6+ features.",
-        image: "https://media.istockphoto.com/id/2236866949/photo/diverse-group-of-it-professionals-presenting-coding-and-network-security-in-office-at-night.webp?a=1&b=1&s=612x612&w=0&k=20&c=ekYxpjMfcZGOu3ngyvFTfFWslIN4x1cTrpGz9HBVmwo="
+        image: "images/workshop-js.jpg"
     },
     {
         title: "Cybersecurity in the Cloud Era",
         type: "Talk",
         date: "2025-11-20T11:00:00",
         description: "Explore the evolving landscape of cloud security threats and proactive defense strategies.",
-        image: "https://media.istockphoto.com/id/1434293435/photo/blue-digital-cloud-computing-cyber-security-digital-data-network-protection-future-technology.webp?a=1&b=1&s=612x612&w=0&k=20&c=CSIAfSF2hroL-qW4ayiggOYesH69gsZFxkQy0QXLgAY="
+        image: "images/cybersecurity.jpg"
+    },
+    {
+        title: "Mobile-First Design in Practice",
+        type: "Workshop",
+        date: "2025-11-20T13:00:00",
+        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
+        image: "images/mobile-first.jpg"
     },
     {
         title: "Introduction to Quantum Computing",
         type: "Talk",
         date: "2025-11-20T14:00:00",
         description: "A beginner-friendly overview of quantum mechanics and its potential to revolutionize computing.",
-        image: "https://media.istockphoto.com/id/1347310377/photo/quantum-computing-background-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=e_ZWdqUcjL0rVNTtgN2x299JCq7ermy0BMq1cniG-AM="
+        image: "images/quantum.jpg"
+    },
+    {
+        title: "DevOps Culture and Tooling",
+        type: "Talk",
+        date: "2025-11-20T15:30:00",
+        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
+        image: "images/devops.jpg"
     },
     {
         title: "Networking Mixer & Welcome Reception",
         type: "Social",
         date: "2025-11-20T17:00:00",
         description: "Connect with fellow attendees, speakers, and sponsors over drinks and appetizers.",
-        image: "https://images.unsplash.com/photo-1643812409758-ff93e9fa910e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV0d29ya2luZyUyME1peGVyJTIwJTI2JTIwV2VsY29tZSUyMFJlY2VwdGlvbnxlbnwwfHwwfHx8MA%3D%3D"
+        image: "images/mixer.jpg"
     },
 
     // --- Day 2: Nov 21, 2025 ---
@@ -42,28 +56,35 @@ const events = [
         type: "Talk",
         date: "2025-11-21T09:30:00",
         description: "A critical discussion on the societal impact and ethical responsibilities in ML development.",
-        image: "https://media.istockphoto.com/id/2204139183/photo/ai-ethics-or-ai-law-concept-developing-ai-codes-of-ethics-compliance-regulation-standard.webp?a=1&b=1&s=612x612&w=0&k=20&c=aSq7zaHiUWHGinxP0hotAbgn2a0XBIQUFf6scZXHNnI="
+        image: "images/ethics.jpg"
     },
     {
         title: "Building Scalable Web Apps with Microservices",
         type: "Talk",
         date: "2025-11-21T10:30:00",
         description: "Learn the principles of microservices from lead engineers at a top tech company.",
-        image: "https://images.unsplash.com/photo-1564798605859-a4ab4a561b2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fEJ1aWxkaW5nJTIwU2NhbGFibGUlMjBXZWIlMjBBcHBzJTIwd2l0aCUyME1pY3Jvc2VydmljZXN8ZW58MHx8MHx8fDA%3D"
+        image: "images/scalable.jpg"
     },
     {
         title: "Mastering React Performance",
         type: "Workshop",
         date: "2025-11-21T13:00:00",
         description: "Optimize your React applications by learning memoization, code splitting, and bundle analysis.",
-        image: "https://media.istockphoto.com/id/1226991705/photo/on-stage-successful-female-executive-and-male-manager-present-new-product-show-infographics.webp?a=1&b=1&s=612x612&w=0&k=20&c=K7vuj-NrY9Fz7TSEapmByF9Jk30nlQMitndks2waYDA="
+        image: "images/react.jpg"
     },
     {
         title: "The Psychology of User Experience (UX)",
         type: "Talk",
         date: "2025-11-21T14:00:00",
         description: "Understand the cognitive biases and psychological principles that drive effective UX design.",
-        image: "https://plus.unsplash.com/premium_photo-1733306548826-95daff988ae6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8VGhlJTIwUHN5Y2hvbG9neSUyMG9mJTIwVXNlciUyMEV4cGVyaWVuY2UlMjAoVVgpfGVufDB8fDB8fHww"
+        image: "images/psychology-ux.jpg"
+    },
+    {
+        title: "API Design Best Practices",
+        type: "Talk",
+        date: "2025-11-21T15:00:00",
+        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
+        image: "images/api.jpg"
     },
     {
         title: "Panel: The Future of Remote Work in Tech",
@@ -109,36 +130,6 @@ const events = [
         description: "An open Q&A session with a panel of the conference's top speakers. No topic is off-limits!",
         image: "images/panel-ama.jpg"
     },
-
-    // --- Bonus / Past Events for testing ---
-    {
-        title: "Pre-Conference Hackathon",
-        type: "Social",
-        date: "2025-11-19T09:00:00",
-        description: "A 24-hour coding challenge with prizes for the most innovative projects. Kicks off before the main event.",
-        image: "images/hackathon.jpg"
-    },
-    {
-        title: "API Design Best Practices",
-        type: "Talk",
-        date: "2025-11-21T15:00:00",
-        description: "Learn how to design, document, and maintain clean, consistent, and easy-to-use RESTful APIs.",
-        image: "images/api.jpg"
-    },
-    {
-        title: "DevOps Culture and Tooling",
-        type: "Talk",
-        date: "2025-11-20T15:30:00",
-        description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
-        image: "images/devops.jpg"
-    },
-    {
-        title: "Mobile-First Design in Practice",
-        type: "Workshop",
-        date: "2025-11-20T13:00:00",
-        description: "A hands-on session focusing on practical techniques for designing and building mobile-first responsive websites.",
-        image: "images/mobile-first.jpg"
-    },
     {
         title: "Closing Ceremony & Awards",
         type: "Social",
@@ -146,4 +137,59 @@ const events = [
         description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
         image: "images/awards.jpg"
     }
+    // Note: Pre-Conference Hackathon removed as it's not part of the main 3-day schedule.
 ];
+
+// Function to format the date and time
+function formatEventDateTime(dateString) {
+    const date = new Date(dateString);
+    const optionsDate = { month: 'short', day: 'numeric' };
+    const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: true };
+    
+    const formattedDate = date.toLocaleDateString('en-US', optionsDate);
+    const formattedTime = date.toLocaleTimeString('en-US', optionsTime);
+
+    return `${formattedDate} at ${formattedTime}`;
+}
+
+// Function to dynamically render the event cards
+function renderEvents() {
+    const eventContainer = document.getElementById('event-container');
+    
+    if (!eventContainer) {
+        console.error("Event container element not found!");
+        return;
+    }
+
+    // Sort events by date and time
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    events.forEach(event => {
+        // 1. Create the main card container
+        const card = document.createElement('div');
+        card.classList.add('event-card');
+
+        // 2. Format the date and time string
+        const dateTimeFormatted = formatEventDateTime(event.date);
+
+        // 3. Populate the card with HTML content using template literals
+        // The event.type is used as a class for type-specific styling (see CSS)
+        card.innerHTML = `
+            <img src="${event.image}" alt="${event.title}">
+            <div class="card-content">
+                <h3>${event.title}</h3>
+                <p>${event.description}</p>
+            </div>
+            <div class="card-meta">
+                <span class="event-type ${event.type}">${event.type}</span>
+                <span class="event-time">${dateTimeFormatted}</span>
+            </div>
+        `;
+
+        // 4. Append the completed card to the container
+        eventContainer.appendChild(card);
+    });
+}
+
+// Run the function when the page content is fully loaded
+document.addEventListener('DOMContentLoaded', renderEvents);

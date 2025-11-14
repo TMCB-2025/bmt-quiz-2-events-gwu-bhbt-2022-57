@@ -1,68 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechCon 2025 Event Showcase</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap">
-    
-    <link rel="stylesheet" href="styles.css">
-
-    <script>
-        // Check localStorage for user preference, fall back to system preference
-        const storedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (storedTheme === 'dark' |
-
-| (!storedTheme && systemPrefersDark)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
-    </script>
+    <title>TechCon 2025 Event Schedule</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+
     <header>
-        <div class="header-content">
-            <h1>TechCon 2025: The Innovation Frontier</h1>
-            <button id="theme-toggle" aria-label="Toggle dark and light mode">
-                <span class="sun-icon">☀</span>
-                <span class="moon-icon">🌙</span>
-            </button>
-        </div>
+        <h1>TechCon 2025 Event Schedule 🗓️</h1>
+        <p>A three-day deep dive into the future of technology.</p>
     </header>
 
     <main>
-        <section id="controls-section">
-            <div class="search-and-filter-bar">
-                <input type="text" id="event-search" placeholder="Search events by title or description..." aria-label="Search events">
-
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all" tabindex="0" role="button">All Events</button>
-                    <button class="filter-btn" data-filter="Keynote" tabindex="0" role="button">Keynotes</button>
-                    <button class="filter-btn" data-filter="Talk" tabindex="0" role="button">Talks</button>
-                    <button class="filter-btn" data-filter="Workshop" tabindex="0" role="button">Workshops</button>
-                    <button class="filter-btn" data-filter="Panel" tabindex="0" role="button">Panels</button>
-                    <button class="filter-btn" data-filter="Social" tabindex="0" role="button">Social</button>
-                </div>
-            </div>
-        </section>
-
+        <h2>Conference Timeline</h2>
         <section id="event-container">
             </section>
-        
-        <p id="no-results" class="hidden" aria-live="polite" role="status">
-            No events match your current search or filter criteria.
-        </p>
-
     </main>
 
     <footer>
-        <p>&copy; 2025 TechCon. All rights reserved. Developed by.</p>
+        <p>&copy; 2025 TechCon. All rights reserved.</p>
     </footer>
-
-    <script src="scripts.js"></script>
+    
+    <script src="scripts/main.js"></script>
 </body>
 </html>
