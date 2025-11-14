@@ -130,7 +130,7 @@ const events = [
         type: "Talk",
         date: "2025-11-20T15:30:00",
         description: "An introduction to the principles of DevOps and the tools that enable continuous integration and deployment.",
-        image: "images/devops.jpg"
+        image: "images/devops.jpg" // I've added this image property
     },
     {
         title: "Mobile-First Design in Practice",
